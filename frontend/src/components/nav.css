@@ -1,0 +1,33 @@
+.main-nav-active{
+    color: tomato;
+    font-size: x-large;
+}
+ .main-nav:hover{
+    color: rgb(231, 52, 231) ! important;
+    font-size: x-large;
+} 
+h1{
+    color:rgb(87, 87, 146);
+    float: right;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(9, 4, 80);
+  }
+  
+  li {
+    float: left;
+    padding: 50;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
