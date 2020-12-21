@@ -7,28 +7,29 @@ class UserRegistration extends React.Component {
     mobile: "",
     email: "",
     password: "",
-    profilePcture: "",
+    ProfilePicture: "",
   };
   userName = (event) => {
     event.preventDefault();
-    this.setState({ ...this.state, name: event.target.value });
+    this.setState({  name: event.target.value });
   };
   userMobile = (event) => {
     event.preventDefault();
-    this.setState({ ...this.state, mobile: event.target.value });
+    this.setState({ mobile: event.target.value });
   };
   userEmail = (event) => {
-    this.setState({ ...this.state, email: event.target.value });
+    event.preventDefault();
+    this.setState({  email: event.target.value });
   };
   userPassword = (event) => {
     event.preventDefault();
-    this.setState({ ...this.state, password: event.target.value });
+    this.setState({ password: event.target.value });
   };
   userProfilePicture = (event) => {
     event.preventDefault();
     const userImg = event.target.files[0]
     console.log('user Img', userImg);
-    this.setState({ ...this.state, profilePcture: userImg });
+    this.setState({  profilePcture: userImg });
   };
   submitUserInfo = () => {
     //if (this.state.name.length < 10 && this.state.mobile === 10) {
@@ -38,19 +39,21 @@ class UserRegistration extends React.Component {
       //   email: this.state.email,
       //   password: this.state.password,
       //   profilePcture: this.state.profilePcture,
-      // };
-      const formData = new FormData();
+      //  };
+
+       const formData = new FormData();
       formData.append('name',this.state.name);
       formData.append('mobile',this.state.mobile)
       formData.append('email',this.state.email)
       formData.append('password',this.state.password)
-      formData.append('profilePcture',this.state.profilePcture)
-      
+       formData.append('profilePcture',this.state.profilePcture)
+        console.log("fd",formData);
+      // console.log("fd",body_userInfo);
 
       axios
-        .post("http", formData)
+        .post("http://localhost:8080/bank/users", formData)
         .then((resp) => {
-          console.log("User Information sent to Database", resp);
+          console.log("User Information sent to Database", resp.data);
         })
         .catch((error) => {
           console.log(error.message);
@@ -111,14 +114,14 @@ class UserRegistration extends React.Component {
               />
             </div>
             <div>
-              <span>Picture: </span>
+               <span>Picture: </span>
               <input
                 type="file"
                 placeholder="Your Pictur"
                 //value={this.state.profilePcture}
                 onChange={ 
                   this.userProfilePicture}
-              />
+              /> 
             </div>
          <button onClick={this.submitUserInfo}>Submit</button>
           </form>

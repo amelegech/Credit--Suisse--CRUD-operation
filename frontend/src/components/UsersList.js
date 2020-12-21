@@ -1,18 +1,18 @@
 import React,{useEffect} from 'react';
-import AllUser from './allUser';
+import User from './User';
 import axios from 'axios';
 
 
 const UsersList=()=> {
-const [userData, setUserData]=React.useState({users:[]});
+const [userData, setUserData]=React.useState({usersList:[]});
   
 useEffect(()=>{
     allUsersData()
-  }) 
+  },[]) 
 const allUsersData =()=>{
-    axios.get("http").then((res)=>{
+    axios.get("http://localhost:8080/bank/allUsers").then((res)=>{
         console.log("Axios resalt from backend", res.data)
-        setUserData({...userData, users:res.data})
+        setUserData({userData,usersList:res.data.data})
 
     }).catch((error)=>{
         console.log("Error from axios", error.message)
@@ -21,8 +21,8 @@ const allUsersData =()=>{
 return (
         <div>
             <h2>Credit Suisse Users</h2>
-            {userData.users.map((item)=>{
-                return( <AllUser 
+            {userData.usersList.map((item, index)=>{
+                return( <User 
                 
                 key={item.id}
                 name={item.name}

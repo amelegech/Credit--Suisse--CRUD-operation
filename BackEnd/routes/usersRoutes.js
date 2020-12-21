@@ -5,9 +5,9 @@ const MyUserController = require('../controllers/usersControllers');
   //200 OK
  // 201 created
  router.post('/users',  MyUserController.userRegistration);
- //router.post('/login', userController.userLogin);
- //router.get('/allUsers', userController.usersList);
- //router.patch('/users/:userId', userController.updateUser);
- //router.delete('/users/:userId', userController.removeUser);
+ router.post('/login', MyUserController.userLogin);
+ router.get('/allUsers', MyUserController.usersList);
+ //router.patch('/users/:userId', MyUserController.updateUser);
+ //router.delete('/users/:userId', MyUserController.removeUser);
 
 module.exports = router;

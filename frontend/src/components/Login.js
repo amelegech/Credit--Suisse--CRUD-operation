@@ -16,17 +16,14 @@ const emailValue=(event)=>{
 const passwordValue=(event)=>{
   event.preventDefault();
   const enteredPassword = event.target.value;
-  setEmail(enteredPassword);
+  setPassword(enteredPassword);
 
 }
-React.useEffect(()=>{
-  userLogin();
-},[])
 
 const  userLogin = async ()=>{
 try {
 
-  const result = await axios.post('http',{email,password})
+  const result = await axios.post('http://localhost:8080/bank/login',{email,password})
   console.log("user data to DB", result);
   histor.push("/UsersList")
 } catch (error) {

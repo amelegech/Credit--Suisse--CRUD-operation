@@ -6,7 +6,8 @@ const userSchema = new Schema({
   mobile: Number,
   email: String,
   password:String,
-//ProfilePicture:Image
+  ProfilePicture: String
     //"https://pbs.twimg.com/profile_images/649141003098591232/fDyZO4pb_400x400.png"
 });
 module.exports = mongoose.model('User', userSchema);  
+
